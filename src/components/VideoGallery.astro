@@ -1,0 +1,83 @@
+---
+const videos = [
+  { id: '_WdU1EZ1-Ow',member:'Gt.hato | Ba.小倉 | Dr.mAkina'}, 
+  { id: '7PH7L2KVMYo',member:'Gt.hato | Ba.小倉 | Dr.mAkina'},
+  { id: 'ujdGQRfvHpk', member:'Gt.hato | Ba.小倉 | Dr.mAkina'},
+  { id: 'FZ6VzdC8XdE', member:'Gt.hato | DJ.VALE'},
+];
+---
+<section id="video" class="video">
+  <div class="container">
+    <h2>VIDEOS</h2>
+    <div class="video-grid">
+      {videos.map(video => (
+        <div class="video-item">
+          <div class="iframe-container">
+            <iframe 
+              src={`https://www.youtube.com/embed/${video.id}`}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+          <p>{video.member} </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .video {
+    padding: 8rem 0;
+    background-color: #151515; /* 少し色を変えてセクションを区切る */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2カラム */
+    gap: 40px;
+  }
+
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9のアスペクト比を維持 */
+  }
+
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .video-item h3 {
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .video-item p{
+    text-align: right;
+    color: #676767;
+    margin-top: 3px;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr; /* スマホでは1カラム */
+      gap: 20px;
+    }
+  }
+</style>
